@@ -21,6 +21,7 @@ import {
 } from './utils/statusLogic';
 import { exportChecklistToCsv } from './utils/csvExporter';
 import { Header } from './components/Header';
+import { ProductHero } from './components/ProductHero';
 import { TenderSummary } from './components/TenderSummary';
 import { UploadedFiles } from './components/UploadedFiles';
 import { RequirementList } from './components/RequirementList';
@@ -428,18 +429,18 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1">
+      <main className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 sm:py-8 w-full flex-1">
         
         {/* Error Notification Banner */}
         {errorNotice && (
-          <div className="mb-5 p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-900 flex items-start justify-between gap-3 shadow-xs">
-            <div className="flex items-start gap-2.5 text-xs sm:text-sm">
-              <AlertCircle className="w-4 h-4 text-rose-600 mt-0.5 shrink-0" />
+          <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-300 text-rose-900 flex items-start justify-between gap-3 shadow-xs">
+            <div className="flex items-start gap-3 text-xs sm:text-sm font-medium">
+              <AlertCircle className="w-5 h-5 text-rose-600 mt-0.5 shrink-0" />
               <span>{errorNotice}</span>
             </div>
             <button
               onClick={() => setErrorNotice(null)}
-              className="text-rose-400 hover:text-rose-700 p-0.5 rounded transition-colors"
+              className="text-rose-400 hover:text-rose-700 p-1 rounded-lg hover:bg-rose-100 transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -448,57 +449,74 @@ export default function App() {
 
         {/* Success Notification Banner */}
         {successNotice && (
-          <div className="mb-5 p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 flex items-start justify-between gap-3 shadow-xs">
-            <div className="flex items-start gap-2.5 text-xs sm:text-sm">
-              <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+          <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-950 flex items-start justify-between gap-3 shadow-xs">
+            <div className="flex items-start gap-3 text-xs sm:text-sm font-medium">
+              <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" />
               <span>{successNotice}</span>
             </div>
             <button
               onClick={() => setSuccessNotice(null)}
-              className="text-emerald-400 hover:text-emerald-700 p-0.5 rounded transition-colors"
+              className="text-emerald-500 hover:text-emerald-800 p-1 rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
         )}
 
-        {/* Tender Summary & Overall Progress */}
+        {/* 1. Distinctive Enterprise Product Hero */}
+        <ProductHero
+          language={language}
+          onScrollToUpload={() => {
+            const el = document.getElementById('upload-section');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+          onScrollToRequirements={() => {
+            const el = document.getElementById('requirements-section');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
+
+        {/* 2. Tender Summary & Overall Progress */}
         <TenderSummary
           tender={data.tender}
           readiness={readiness}
           language={language}
         />
 
-        {/* Workspace Layout: Left Content & Right Sidebar */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* 3. Main Workspace Layout: Balanced Grid (minmax(0,1fr) + 390px sticky panel) */}
+        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_390px] gap-8 items-start">
           
-          {/* Main Work Area (col-span-8) */}
-          <div className="lg:col-span-8 space-y-6">
+          {/* Main Left Work Area */}
+          <div className="space-y-6 min-w-0">
             
             {/* Uploaded Files Manager */}
-            <UploadedFiles
-              files={uploadedFiles}
-              requirements={data.requirements}
-              language={language}
-              onUploadFiles={handleUploadFiles}
-              onRemoveFile={handleRemoveFile}
-              onAutoMatch={handleAutoMatch}
-            />
+            <div id="upload-section">
+              <UploadedFiles
+                files={uploadedFiles}
+                requirements={data.requirements}
+                language={language}
+                onUploadFiles={handleUploadFiles}
+                onRemoveFile={handleRemoveFile}
+                onAutoMatch={handleAutoMatch}
+              />
+            </div>
 
             {/* Document Requirements Table & Matching */}
-            <RequirementList
-              evaluations={evaluations}
-              uploadedFiles={uploadedFiles}
-              submissionDeadline={data.tender.submission_deadline}
-              language={language}
-              onMatchChange={handleMatchChange}
-              onExpiryDateChange={handleExpiryDateChange}
-            />
+            <div id="requirements-section">
+              <RequirementList
+                evaluations={evaluations}
+                uploadedFiles={uploadedFiles}
+                submissionDeadline={data.tender.submission_deadline}
+                language={language}
+                onMatchChange={handleMatchChange}
+                onExpiryDateChange={handleExpiryDateChange}
+              />
+            </div>
 
           </div>
 
-          {/* Right Sidebar: Readiness & Generation (col-span-4) */}
-          <div className="lg:col-span-4">
+          {/* Right Sidebar: Sticky Decision Support Readiness Panel */}
+          <div className="xl:block">
             <ReadinessPanel
               readiness={readiness}
               language={language}
@@ -528,9 +546,9 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="mt-auto border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-2">
-          <div>
+      <footer className="mt-auto border-t border-slate-200/90 bg-white py-5 text-center text-xs text-slate-500">
+        <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-wrap items-center justify-between gap-3">
+          <div className="font-medium text-slate-600">
             AI DevFest 2026 • <strong>Tender Document Package Builder</strong>
           </div>
           <div className="text-slate-400">

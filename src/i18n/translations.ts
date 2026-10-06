@@ -9,6 +9,18 @@ export const translations = {
     submissionDeadline: 'Submission Deadline',
     tenderTitle: 'Tender Title',
     
+    // Product Hero
+    heroBadge: 'TENDER DOCUMENT PACKAGE BUILDER',
+    heroHeadlinePart1: 'Build.',
+    heroHeadlinePart2: 'Verify.',
+    heroHeadlinePart3: 'Package.',
+    heroSupporting: 'Turn tender documents into a complete, verified PDF package — faster and with confidence.',
+    heroCtaStart: 'Start Building',
+    heroCtaRequirements: 'View Requirements',
+    heroFeature1: 'Sequential document verification',
+    heroFeature2: 'Expiry & duplicate checks',
+    heroFeature3: 'Browser-native PDF packaging',
+    
     // Actions & Buttons
     loadRequirements: 'Load requirements.json',
     loadSamplePack: 'Load Official Contest Sample',
@@ -116,6 +128,18 @@ export const translations = {
     bidderName: 'দরদাতা প্রতিষ্ঠান',
     submissionDeadline: 'দাখিলের শেষ সময়সীমা',
     tenderTitle: 'টেন্ডারের শিরোনাম',
+    
+    // Product Hero
+    heroBadge: 'টেন্ডার ডকুমেন্ট প্যাকেজ বিল্ডার',
+    heroHeadlinePart1: 'সংকলন।',
+    heroHeadlinePart2: 'যাচাই।',
+    heroHeadlinePart3: 'প্যাকেজ।',
+    heroSupporting: 'টেন্ডার নথিপত্রকে রূপান্তর করুন পূর্ণাঙ্গ ও যাচাইকৃত পিডিএফ প্যাকেজে — দ্রুততর এবং আত্মবিশ্বাসের সাথে।',
+    heroCtaStart: 'শুরু করুন',
+    heroCtaRequirements: 'শর্তাবলী দেখুন',
+    heroFeature1: 'শর্তাবলী অনুযায়ী পর্যায়ক্রমিক যাচাই',
+    heroFeature2: 'মেয়াদোত্তীর্ণ ও ডুপ্লিকেট কন্টেন্ট সুরক্ষা',
+    heroFeature3: 'নিরাপদ ক্লায়েন্ট-সাইড পিডিএফ সংকলন',
     
     // Actions & Buttons
     loadRequirements: 'requirements.json লোড করুন',
