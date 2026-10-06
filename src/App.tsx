@@ -226,6 +226,21 @@ export default function App() {
   // Handler: Upload multiple files (with validation and duplicate check)
   const handleUploadFiles = async (fileList: FileList | File[]) => {
     const filesArray = Array.from(fileList);
+    
+    // Check total file count limit (Max 30 files)
+    if (uploadedFiles.length + filesArray.length > 30) {
+      setErrorNotice(t.fileLimitExceeded);
+      return;
+    }
+
+    // Check total size limit (Max 50 MB = 50 * 1024 * 1024 bytes)
+    const currentTotalSize = uploadedFiles.reduce((acc, f) => acc + f.size, 0);
+    const newFilesSize = filesArray.reduce((acc, f) => acc + f.size, 0);
+    if (currentTotalSize + newFilesSize > 50 * 1024 * 1024) {
+      setErrorNotice(t.sizeLimitExceeded);
+      return;
+    }
+
     const newRecords: UploadedFileRecord[] = [];
     const rejectedNames: string[] = [];
 

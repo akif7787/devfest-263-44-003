@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
                 {/* Tender ID Badge: Non-wrapping, cleanly padded */}
                 <span className="whitespace-nowrap inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-slate-900 text-white shadow-2xs border border-slate-800">
                   <Tag className="w-3 h-3 text-blue-400 shrink-0" />
-                  <span>{tender.tender_id || 'PRO-2026'}</span>
+                  <span>{tender.tender_id || 'T-2026-0417'}</span>
                 </span>
               </div>
               

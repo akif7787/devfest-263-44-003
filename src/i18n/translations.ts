@@ -92,6 +92,8 @@ export const translations = {
     
     // Errors & Validations
     nonPdfRejected: 'Rejected "{name}": Only .pdf files are accepted.',
+    fileLimitExceeded: 'Upload limit exceeded: Maximum 30 files allowed.',
+    sizeLimitExceeded: 'File size limit exceeded: Total files cannot exceed 50 MB.',
     jsonInvalid: 'Invalid requirements.json file format. Please check the structure.',
     jsonLoadedSuccess: 'Loaded requirements for Tender: {id}',
     sampleLoadedSuccess: 'Loaded official AI DevFest 2026 sample pack!',
@@ -212,6 +214,8 @@ export const translations = {
     
     // Errors & Validations
     nonPdfRejected: 'বাতিল করা হয়েছে "{name}": শুধুমাত্র .pdf ফাইল গ্রহণযোগ্য।',
+    fileLimitExceeded: 'ফাইল আপলোডের সীমা অতিক্রম করেছে: সর্বোচ্চ ৩০টি ফাইল অনুমোদিত।',
+    sizeLimitExceeded: 'ফাইলের মোট আকার অতিক্রম করেছে: মোট সাইজ ৫০ এমবি এর বেশি হতে পারবে না।',
     jsonInvalid: 'requirements.json ফাইলের ফরম্যাট সঠিক নয়। অনুগ্রহ করে যাচাই করুন।',
     jsonLoadedSuccess: 'টেন্ডার নথির শর্তাবলী লোড হয়েছে: {id}',
     sampleLoadedSuccess: 'অফিসিয়াল AI DevFest 2026 নমুনা প্যাক সফলভাবে লোড হয়েছে!',
