@@ -1,0 +1,6 @@
+{
+  "name": "Tender Document Package Builder",
+  "description": "Professional browser-based tender document verification, ordering, and PDF package builder with bilingual English/Bangla support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
